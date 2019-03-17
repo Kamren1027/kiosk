@@ -54,6 +54,9 @@ class App extends Component {
 
   handleSubmit = (event) =>{ 
     alert(this.state);
+    //submitCustomer(this.state);
+    //return and display message with average wait time for customer
+    //clear state for the next user
   }
 
   clearFrom = (event) =>{
@@ -64,7 +67,8 @@ class App extends Component {
         reason: "",
         squadron: "",
         signIn: "",
-        wait: ""
+        wait: "",
+        status: ""
     })
   } 
 
