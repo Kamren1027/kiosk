@@ -95,7 +95,7 @@ class App extends Component {
             <input type="textbox" id="squadron" value ={this.state.squadron} onChange={this.handleChange} ></input><br />
             <input type="submit" value="Sign In"/>   
           </form>
-          <button onClick={this.clearFrom}>Clear From</button>
+          <button onClick={this.clearFrom}>Clear Form</button>
         </div>;
     }
 
