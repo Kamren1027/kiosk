@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  background-image: url("bg.jpg");
+  background-size: auto;
+  background-attachment:fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 20%;
+  position: relative;
+}
+
+.inputMenu-div
+{     
+  background-color: aliceblue; 
+    float: left;
+    margin-left: 36.5%;  
+    padding: 20px;
+    height: 35%;
+    width: 30%;
+
+}
+
+#form
+{
+  visibility: hidden;
+  float: left;
+  color: aliceblue;
+
+}
+
+
