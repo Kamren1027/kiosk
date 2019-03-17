@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       formState: "1",
       firstName: "",
-      lastTime: "",
+      lastName: "",
       reason: "",
       squadron: "",
       signIn: "",
@@ -38,21 +38,35 @@ class App extends Component {
       case "firstName":
           this.setState({firstName: event.target.value});
           break;
-      case "lastname":
-          this.setState({firstName: event.target.value});
+      case "lastName":
+          this.setState({lastName: event.target.value});
           break;
       case "reason":
-          this.setState({firstName: event.target.value});
+          this.setState({reason: event.target.value});
           break;
       case "squadron":
-          this.setState({firstName: event.target.value});
+          this.setState({squadron: event.target.value});
+          break;
+      default:
           break;
     }
   }
 
-  handleSubmit = () =>{
-    
+  handleSubmit = (event) =>{ 
+    alert(this.state);
   }
+
+  clearFrom = (event) =>{
+    this.setState({
+        formState: "2",
+        firstName: "",
+        lastName: "",
+        reason: "",
+        squadron: "",
+        signIn: "",
+        wait: ""
+    })
+  } 
 
   render() {
 
@@ -70,12 +84,18 @@ class App extends Component {
     } else {
       form =
         <div className = "inputMenu-div">
-          <form>
-            <input type="textbox" id="firstName" value ={this.state.firstName}  onChange={this.handleChange} ></input>
-            <input type="textbox" id="lastName" value ={this.state.lastName} onChange={this.handleChange} ></input>
-            <input type="textbox" id="reason" value ={this.state.reason} onChange={this.handleChange} ></input>
-            <input type="textbox" id="squadron" value ={this.state.squadron} onChange={this.handleChange} ></input>       
+          <form onSubmit={this.handleSubmit}>
+            <label>First Name: </label>
+            <input type="textbox" id="firstName" value ={this.state.firstName}  onChange={this.handleChange} ></input><br />
+            <label>Last Name: </label>
+            <input type="textbox" id="lastName" value ={this.state.lastName} onChange={this.handleChange} ></input><br />
+            <label>Reason for Visit: </label>
+            <input type="textbox" id="reason" value ={this.state.reason} onChange={this.handleChange} ></input><br />
+            <label>Squardon: </label>
+            <input type="textbox" id="squadron" value ={this.state.squadron} onChange={this.handleChange} ></input><br />
+            <input type="submit" value="Sign In"/>   
           </form>
+          <button onClick={this.clearFrom}>Clear From</button>
         </div>;
     }
 
