@@ -9,23 +9,25 @@ body {
   position: relative;
 }
 
-.inputMenu-div
-{     
+.inputMenu-div  {     
   background-color: aliceblue; 
     float: left;
     margin-left: 36.5%;  
     padding: 20px;
     height: 35%;
     width: 30%;
-
 }
 
-#form
-{
+.inputbox {
+  float: right;
+  margin-left: 36.5%;
+  padding: 20px;  
+}
+
+#form {
   visibility: hidden;
   float: left;
   color: aliceblue;
-
 }
 
 

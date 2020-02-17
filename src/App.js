@@ -88,7 +88,7 @@ class App extends Component {
     } else {
       form =
         <div className = "inputMenu-div">
-          <form onSubmit={this.handleSubmit}>
+          <form className = "inputbox" onSubmit={this.handleSubmit}>
             <label>First Name: </label>
             <input type="textbox" id="firstName" value ={this.state.firstName}  onChange={this.handleChange} ></input><br />
             <label>Last Name: </label>
