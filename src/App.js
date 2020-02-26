@@ -53,10 +53,11 @@ class App extends Component {
   }
 
   handleSubmit = (event) =>{ 
-    alert(this.state);
-    //submitCustomer(this.state);
-    //return and display message with average wait time for customer
-    //clear state for the next user
+    fetch("http://localhost:8080/visit/signIn", {
+    method: "post"})
+    .then( (response) => { 
+      //do something awesome that makes the world a better place
+    });
   }
 
   clearFrom = (event) =>{
@@ -66,6 +67,7 @@ class App extends Component {
         lastName: "",
         reason: "",
         squadron: "",
+        phone: "",
         signIn: "",
         wait: "",
         status: ""
@@ -95,11 +97,13 @@ class App extends Component {
             <input type="textbox" id="lastName" value ={this.state.lastName} onChange={this.handleChange} ></input><br />
             <label>Reason for Visit: </label>
             <input type="textbox" id="reason" value ={this.state.reason} onChange={this.handleChange} ></input><br />
+            <label>Phone: </label>
+            <input type="textbox" id="phone" value ={this.state.phone} onChange={this.handleChange} ></input><br />
             <label>Squardon: </label>
             <input type="textbox" id="squadron" value ={this.state.squadron} onChange={this.handleChange} ></input><br />
-            <input type="submit" value="Sign In"/>   
+            <input id="submit" type="submit" value="Sign In"/>   
           </form>
-          <button onClick={this.clearFrom}>Clear Form</button>
+          <button id="clear" onClick={this.clearFrom}>Clear Form</button>
         </div>;
     }
 

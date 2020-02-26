@@ -12,8 +12,19 @@ button{
   padding: 20px;
   height: 35%;   
   width: 45%;
-  min-width: 300px;
+  min-width: 400px;
   min-height: 125px;
+}
+
+input{
+  float: right;
+  margin-right: 15%;
+  margin-bottom: 4px;
+}
+
+label{
+  margin-left: 15%;
+  margin-bottom: 10px;
 }
 
 .formCAC
