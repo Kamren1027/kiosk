@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import CustomerTable from './CustomerTable';
 
 class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      formState: "1",
+      formState: "CAC",
       firstName: "",
       lastName: "",
       reason: "",
@@ -16,22 +17,27 @@ class App extends Component {
     };
   }
 
-  splitInput(key){
+  splitInput(key) {
     alert("hello it worked!");
   }
 
-  haveCAC(e)
-  {
-      let formState = "1";
+  haveCAC(e){
+      let formState = "noCAC";
       this.setState({formState});
   }
 
-  haveNoCAC(e)
-  {
+  haveNoCAC(e){
       this.setState({
-        formState: "2"
+        formState: "CAC"
     });
   }
+
+  showQueue(e){
+    this.setState({
+      formState: "queue"
+    });
+  }
+
 
   handleChange = (event) =>{
     switch (event.target.id) {
@@ -62,7 +68,7 @@ class App extends Component {
 
   clearFrom = (event) =>{
     this.setState({
-        formState: "2",
+        formState: "noCAC",
         firstName: "",
         lastName: "",
         reason: "",
@@ -78,7 +84,7 @@ class App extends Component {
 
     let form;
 
-    if (this.state.formState === "1") {
+    if (this.state.formState === "CAC") {
       form = 
         <div className = "inputMenu-div">
           <h4 className = "formCAC">Please Scan the Front of you CAC</h4>
@@ -87,7 +93,7 @@ class App extends Component {
             <input id="scanInput" type="textbox" onChange={this.handleChange} value = {this.state.firstName} ></input>         
           </div>
         </div>;
-    } else {
+    } else if (this.state.formState === "noCAC") {
       form =
         <div className = "inputMenu-div">
           <form className = "inputbox" onSubmit={this.handleSubmit}>
@@ -105,14 +111,20 @@ class App extends Component {
           </form>
           <button id="clear" onClick={this.clearFrom}>Clear Form</button>
         </div>;
+    } else if(this.state.formState === "queue") {
+      form = 
+      <div>
+        <CustomerTable/>
+      </div>
     }
 
 
     return (
       <div id = "menu">
         <div className = "inputMenu-div">
-          <button id="CAC" onClick={this.haveCAC.bind(this)} type="button" value= "1" className="btn btn-info">Sign In With CAC</button>
-          <button id="NoCAC" onClick={this.haveNoCAC.bind(this)} type="button" value= "2" className="btn btn-info">Do Not have CAC</button>
+          <button id="CAC" onClick={this.haveCAC.bind(this)} type="button" value= "CAC" className="btn btn-info">Sign In With CAC</button>
+          <button id="NoCAC" onClick={this.haveNoCAC.bind(this)} type="button" value= "noCAC" className="btn btn-info">Do Not have CAC</button>
+          <button id="showQueue" onClick={this.showQueue.bind(this)} type="button" value= "queue" className="btn btn-info">Waiting List</button>
         </div>
         
         <div>

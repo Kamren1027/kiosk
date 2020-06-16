@@ -8,5 +8,4 @@ import CustomerTable from './CustomerTable';
 
 ReactDOM.render(
     <App/>, document.getElementById('inputMenu'));
-ReactDOM.render( <CustomerTable/>, document.getElementById('dataTable'));
 
