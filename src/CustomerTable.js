@@ -62,7 +62,7 @@ class CustomerTable extends Component {
   render() {
     return (
       <div>
-          <h1 id='title'>Customer Queue</h1>
+          <h1 id='tableTitle'>Customer Queue</h1>
           <table id='visits'>
             <tbody>
                 <tr>{/*this.renderTableHeader()*/}</tr>

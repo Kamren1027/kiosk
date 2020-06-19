@@ -113,10 +113,10 @@ class App extends Component {
         </div>;
     } else if(this.state.formState === "queue") {
       form = 
-      <div>
+      <div className = "inputMenu-div">
         <CustomerTable/>
       </div>
-    }
+    } 
 
 
     return (
