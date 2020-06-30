@@ -22,13 +22,13 @@ class App extends Component {
   }
 
   haveCAC(e){
-      let formState = "noCAC";
+      let formState = "CAC";
       this.setState({formState});
   }
 
   haveNoCAC(e){
       this.setState({
-        formState: "CAC"
+        formState: "noCAC"
     });
   }
 
@@ -59,11 +59,27 @@ class App extends Component {
   }
 
   handleSubmit = (event) =>{ 
-    fetch("http://localhost:8080/visit/signIn", {
-    method: "post"})
-    .then( (response) => { 
-      //do something awesome that makes the world a better place
-    });
+    var visit = {
+      firstName : "test", 
+      lastName : "user", 
+      phone : "8439063067",
+      email : "",
+      station : "",
+      section : "",
+      service : "",
+      tech : "",
+      created : "",
+      serviceTime : ""
+    };
+
+    fetch("http://localhost:8080/visit/", {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(visit)
+      });
   }
 
   clearFrom = (event) =>{
