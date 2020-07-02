@@ -10,10 +10,13 @@ class App extends Component {
       formState: "CAC",
       firstName: "",
       lastName: "",
-      reason: "",
-      squadron: "",
-      signIn: "",
-      wait: ""
+      email : "",
+      station : "",
+      section : "",
+      service : "",
+      tech : "",
+      created : "",
+      serviceTime : ""
     };
   }
 
@@ -39,13 +42,16 @@ class App extends Component {
   }
 
 
-  handleChange = (event) =>{
+  handleChange = (event) => {
     switch (event.target.id) {
       case "firstName":
           this.setState({firstName: event.target.value});
           break;
       case "lastName":
           this.setState({lastName: event.target.value});
+          break;
+      case "email":
+          this.setState({email: event.target.value});
           break;
       case "reason":
           this.setState({reason: event.target.value});
@@ -60,16 +66,16 @@ class App extends Component {
 
   handleSubmit = (event) =>{ 
     var visit = {
-      firstName : "test", 
-      lastName : "user", 
-      phone : "8439063067",
-      email : "",
-      station : "",
-      section : "",
-      service : "",
-      tech : "",
-      created : "",
-      serviceTime : ""
+      firstName : this.state.firstName, 
+      lastName : this.state.lastName, 
+      phone : this.state.phone,
+      email : this.state.email,
+      station : this.state.station,
+      section : this.state.section,
+      service : this.state.service,
+      tech : this.state.tech,
+      created : this.state.created,
+      serviceTime : this.state.serviceTime
     };
 
     fetch("http://localhost:8080/visit/", {
@@ -117,12 +123,14 @@ class App extends Component {
             <input type="textbox" id="firstName" value ={this.state.firstName}  onChange={this.handleChange} ></input><br />
             <label>Last Name: </label>
             <input type="textbox" id="lastName" value ={this.state.lastName} onChange={this.handleChange} ></input><br />
-            <label>Reason for Visit: </label>
-            <input type="textbox" id="reason" value ={this.state.reason} onChange={this.handleChange} ></input><br />
             <label>Phone: </label>
             <input type="textbox" id="phone" value ={this.state.phone} onChange={this.handleChange} ></input><br />
+            <label>Email: </label>
+            <input type="email" id="email" value ={this.state.email} onChange={this.handleChange} ></input><br />
             <label>Squardon: </label>
             <input type="textbox" id="squadron" value ={this.state.squadron} onChange={this.handleChange} ></input><br />
+            <label>Reason for Visit: </label>
+            <input type="textbox" id="reason" value ={this.state.reason} onChange={this.handleChange} ></input><br />
             <input id="submit" type="submit" value="Sign In"/>   
           </form>
           <button id="clear" onClick={this.clearFrom}>Clear Form</button>
