@@ -32,20 +32,16 @@ class CustomerTable extends Component {
 
   renderTableData() {
     return this.state.visits.map((visit, index) => {
-      const { created, email, firstName, id, lastName, phone, section, service, serviceTime, station, tech, waitTime} = visit //destructuring
+      const { created, firstName, id, lastName, phone, section, service, serviceTime, waitTime} = visit //destructuring
       return (
           <tr key={id}>
-            <td>{id}</td>
             <td>{firstName}</td>
             <td>{lastName}</td>
-            <td>{email}</td>
             <td>{created}</td>
             <td>{phone}</td>
             <td>{section}</td>
             <td>{service}</td>
             <td>{serviceTime}</td>
-            <td>{station}</td>
-            <td>{tech}</td>
             <td>{waitTime}</td>
           </tr>
       )
