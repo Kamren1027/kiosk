@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './CustomerTable.css';
 
 class CustomerTable extends Component {
   constructor(props) {
@@ -10,39 +11,38 @@ class CustomerTable extends Component {
 
   componentDidMount() {
     fetch("http://localhost:8080/visit/")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            visits: result
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          isLoaded: true,
+          visits: result
+        });
+      },
+      // Note: it's important to handle errors here
+      // instead of a catch() block so that we don't swallow
+      // exceptions from actual bugs in components.
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
   }
 
   renderTableData() {
-    return this.state.visits.map((visit, index) => {
-      const { created, firstName, id, lastName, phone, section, service, serviceTime, waitTime} = visit //destructuring
+    return this.state.visits.map((visit) => {
+      const { created, firstName, id, lastName, phone, service, waitTime} = visit //destructuring
       return (
           <tr key={id}>
             <td>{firstName}</td>
             <td>{lastName}</td>
             <td>{created}</td>
             <td>{phone}</td>
-            <td>{section}</td>
             <td>{service}</td>
-            <td>{serviceTime}</td>
             <td>{waitTime}</td>
+            <td><button id="process" className="btn btn-info" onClick={() => this.processCustomer(visit)}>Process</button></td>
           </tr>
       )
     })
@@ -66,6 +66,29 @@ class CustomerTable extends Component {
             </tbody>
           </table>
       </div>
+    )
+  }
+
+  processCustomer(visit) {
+    alert('Processing' + visit.firstName);
+    fetch("http://localhost:8080/visit/" + visit.id)
+    .then(res => res.json())
+    .then(
+      (result) => {
+        this.setState({
+          isLoaded: true,
+          visits: result
+        });
+      },
+      // Note: it's important to handle errors here
+      // instead of a catch() block so that we don't swallow
+      // exceptions from actual bugs in components.
+      (error) => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
     )
   }
 }
