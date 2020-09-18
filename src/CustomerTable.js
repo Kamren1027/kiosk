@@ -69,7 +69,7 @@ class CustomerTable extends Component {
     )
   }
 
-  processCustomer(visit) {
+  processCustomer(visit) {  
     alert('Processing' + visit.firstName);
     fetch("http://localhost:8080/visit/" + visit.id)
     .then(res => res.json())

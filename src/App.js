@@ -131,9 +131,10 @@ class App extends Component {
             <input type="textbox" id="squadron" value ={this.state.squadron} onChange={this.handleChange} ></input><br />
             <label>Reason for Visit: </label>
             <input type="textbox" id="reason" value ={this.state.reason} onChange={this.handleChange} ></input><br />
-            <input id="submit" type="submit" value="Sign In"/>   
-          </form>
-          <button id="clear" onClick={this.clearFrom}>Clear Form</button>
+            <div id= "clearFloat"></div>
+            <input id="submit" type="submit" value="Sign In" className="btn btn-info"/> 
+            <button id="clear" className="btn btn-info" onClick={this.clearFrom}> Clear Form</button>  
+          </form> 
         </div>;
     } else if(this.state.formState === "queue") {
       form = 

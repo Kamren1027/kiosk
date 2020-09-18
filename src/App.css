@@ -74,6 +74,17 @@ img{
   color: white;
 }
 
+#submit {
+  position: relative;
+  left: -60px;
+  top: 40px;
+}
+
+#clear {
+  position: relative;
+  right: -70px;
+  top: -25px;
+}
 
 #tableTitle {
   text-align: center;
