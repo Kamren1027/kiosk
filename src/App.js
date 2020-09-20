@@ -7,7 +7,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      formState: "CAC",
+      username: "",
+      password: "",
+      formState: "login",
       firstName: "",
       lastName: "",
       email : "",
@@ -59,6 +61,12 @@ class App extends Component {
       case "squadron":
           this.setState({squadron: event.target.value});
           break;
+      case "username":
+        this.setState({username: event.target.value});
+        break;
+      case "password":
+        this.setState({password: event.target.value});
+        break;
       default:
           break;
     }
@@ -141,8 +149,18 @@ class App extends Component {
       <div className = "inputMenu-div">
         <CustomerTable/>
       </div>
-    } 
-
+    } else if(this.state.formState === "login") {
+      form =
+      <div class = "inputMenu-div">
+        <form className = "inputbox" method="POST" action="http://localhost:8080/login" onSubmit={this.handleSubmit}>
+            <label>Username: </label>
+            <input type="username" id="username" value ={this.state.username} onChange={this.handleChange} ></input><br />
+            <label>Password: </label>
+            <input type="password" id="password" value ={this.state.password} onChange={this.handleChange} ></input><br />
+            <input id="submit" type="submit" value="Log In" className="btn btn-info"/>   
+          </form> 
+      </div>
+    }
 
     return (
       <div id = "menu">
